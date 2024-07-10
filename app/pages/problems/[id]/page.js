@@ -6,8 +6,8 @@ export default function Myworkspace() {
             <h1>Title</h1>
             <p>Description</p>
           </div>
-          <div className="bg-stone-800 p-[1%] ml-[1%] grow min-w-[35%] max-w-[75%] overflow-auto rounded-xl">
-
+          <div className="bg-stone-800 p-[1%] ml-[1%] grow min-w-[35%] max-w-[75`%] overflow-auto rounded-xl">
+            
           </div>
         </div>
       </div>
