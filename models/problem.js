@@ -1,11 +1,9 @@
-const { Description } = require('@headlessui/react/dist/components/description/description');
 const mongoose=require('mongoose');
 
-const problemschema=new mongoose.problemschema({
+const problemschema=new mongoose.Schema({
     date:{
         type: Date,
         default: function() {
-            // Format the current date using toLocaleString with options
             return new Date().toLocaleString(undefined, {
                 year: 'numeric',
                 month: 'short',

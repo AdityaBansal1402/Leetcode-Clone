@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.boxy{
+    position: relative;
+    transform-style: preserve-3d;
+    transform: 
+    perspective(5000px)
+    rotateY(var(--rotateY))
+    rotateX(var(--rotateX));
+}
+.boxy::after,
+.boxy::before{
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+}
+
+.boxy::after{
+    inset: 0rem;
+    background: 
+    linear-gradient(4deg,rgb(2, 57, 41),rgb(0, 46, 47));
+    opacity: 50%;
+    transform: translateZ(-50px);
+}
+.boxy::before{
+    inset: 0rem;
+    background: rgb(54, 205, 187);
+    transform: translatez(-40px);
+    filter: blur(40px);
+    opacity: 1;
+    
+}
+.leetcode{
+    position: relative;
+}
+
+.leetcode::after,
+.leetcode::before{
+    content: "";
+    position: absolute;
+}
+
+.leetcode::before{
+    inset: 0rem;
+    background: rgb(17, 78, 70);
+    transform: translatez(-40px);
+    filter: blur(40px);
+    opacity: 0.3;
+    
+}
