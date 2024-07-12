@@ -1,9 +1,9 @@
-import Front from "./pages/home/page";
+import Land from "./pages/landing/page";
 
 export default function Home() {
   return (
     <main className='min-h-screen-minus-navbar bg-zinc-900'>
-      <Front/>
+      <Land/>
     </main>
   );
 }
