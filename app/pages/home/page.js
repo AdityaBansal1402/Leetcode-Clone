@@ -1,5 +1,7 @@
 "use client";
 import { useEffect } from 'react';
+import avtar from "../../../public/banner.png"
+import Image from 'next/image';
 import './mycss.css';
 
 export default function Front() {
@@ -12,7 +14,7 @@ export default function Front() {
 
     const handleMouseEnter = () => {
         boxy.addEventListener("mousemove", handleMouseMove);
-        boxy.style.transition = "transform 0.1s ease";
+        boxy.style.transition = "transform 0.3s ease";
     };
 
     const handleMouseLeave = () => {
@@ -47,14 +49,16 @@ function rotateElement(event, element) {
 
 return (
         <div className="flex mt-[5%] w-screen justify-center resize-x mb-[5%]">
-        <div className={`relative w-[60%] max-h-[70%] pb-[30%] bg-zinc-950 h-3 rounded-md boxy flex `}>
+        <div className={`relative w-[60%] max-h-[70%] pb-[29.2%] bg-zinc-950 h-3 rounded-md boxy flex `}>
           <div className="relative w-full bg-zinc-950 rounded-md flex items-center justify-center">
-            <div className="text-white p-[4%]">
-                        
-                        <div className='mt-28'>
-                            Welcome To LeetCode
-                        </div>
-                    </div>
+            <div className="text-white p-[2%] relative translate-y-[50%]">
+            <Image
+                    src={avtar}
+                    alt="Banner"
+                    layout="responsive"
+                    className='rounded-lg'
+                    />
+            </div>
                 </div>
             </div>
         </div>
