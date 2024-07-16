@@ -22,22 +22,23 @@ export default function Myworkspace() {
           <h1>Title</h1>
           <p>Description</p>
         </div>
-        <div className="bg-stone-900 p-[1%] ml-[1%] grow min-w-[35%] max-w-[75%] overflow-auto rounded-xl">
-          {/* Only render the CodeMirror component once */}
-          <div className='h-full'>
-            <CodeMirror
-              ref={editorRef}
-              value={code}
-              options={{
-                mode: 'javascript',
-                theme: 'custom', // Assuming you want the Material theme
-                lineNumbers: true
-              }}
-              onBeforeChange={(editor, data, value) => {
-                setCode(value);
-              }}
-              onChange={handleChange}
-            />
+        <div className='flex flex-col ml-[1%] grow min-w-[35%] max-w-[75%]'>
+          <div className="bg-stone-900  overflow-auto rounded-xl min-h-[25%] max-h-[70%] grow">
+            <div className='h-full p-2'>
+              <CodeMirror
+                ref={editorRef}
+                value={code}
+                options={{
+                  mode: 'javascript',
+                  theme: 'custom', 
+                  lineNumbers: true
+                }}
+                onBeforeChange={(editor, data, value) => {
+                  setCode(value);
+                }}
+                onChange={handleChange}
+              />
+            </div>
           </div>
         </div>
       </div>
