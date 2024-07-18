@@ -7,7 +7,7 @@ import './custom.css';
 import 'codemirror/mode/javascript/javascript';
 
 export default function Myworkspace() {
-  const [code, setCode] = useState("r");
+  const [code, setCode] = useState("");
   const editorRef = useRef(null);
 
   const handleChange = (editor, data, value) => {
