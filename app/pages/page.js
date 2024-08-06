@@ -7,7 +7,7 @@ export default function Navbar() {
             <div className="flex space-x-[5%] items-center justify-center">
                 <Link href="/pages/problems">Problems</Link>
                 <div>Discuss</div>
-                <div>About</div>
+                <Link href="/pages/landing">About</Link>
             </div>
         </div>
     </div>
