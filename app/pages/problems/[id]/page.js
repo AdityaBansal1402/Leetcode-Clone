@@ -45,7 +45,7 @@ export default function Myworkspace() {
       <div className="flex flex-grow text-white m-[1%] overflow-hidden">
         <div className="bg-stone-900 p-[1%] min-w-[35%] max-w-[50%] overflow-auto rounded-xl">
           <h1>Title</h1>
-          <p>Description</p>
+          <p>Descriptions</p>
         </div>
         <div className='flex flex-col ml-[1%] grow min-w-[35%] max-w-[75%]'>
           <div className="bg-stone-900 overflow-auto rounded-xl min-h-[25%] max-h-[70%] grow">
