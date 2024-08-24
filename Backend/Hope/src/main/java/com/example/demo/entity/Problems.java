@@ -18,8 +18,10 @@ public class Problems {
 	public Problems(){
 		   super();
 	}
-	 public Problems(String title, String description) {
-	        this.title = title;
+	 public Problems(Long id, String title, String description) {
+	        super();
+	        this.id = id;
+		 	this.title = title;
 	        this.description = description;
 	    }
 	@Id

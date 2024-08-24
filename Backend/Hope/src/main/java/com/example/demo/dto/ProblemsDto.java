@@ -9,9 +9,9 @@ public class ProblemsDto {
 	public ProblemsDto(){
 		   super();
 	}
-	public ProblemsDto(String title, String description) {
-//		super();
-//		this.id = id;
+	public ProblemsDto(Long id, String title, String description) {
+		super();
+		this.id = id;
 		this.title = title;
 		this.description = description;
 	}
