@@ -47,4 +47,15 @@ public class ProblemsServiceImpl implements ProblemsService {
 		return problems.stream().map((problem)-> ProblemsMapper.maptoProblemsDto(problem)).collect((Collectors.toList()));
 	}
 
+	@Override
+	public ProblemsDto updateProblem(Long problemId, ProblemsDto problemsDto) {
+		Problems problems = problemsRepository.findById(problemId)
+				.orElseThrow(()->
+						new ResourceNotFoundException("Problem doesnotexist"));
+		problems.setTitle(problemsDto.getTitle());
+		problems.setDescription(problemsDto.getDescription());
+		Problems updatedProblem = problemsRepository.save(problems);
+		return ProblemsMapper.maptoProblemsDto(updatedProblem);
+	}
+
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -41,6 +42,12 @@ public class ProblemsController {
 	public ResponseEntity<List<ProblemsDto>> getAllProblems(){
 		List<ProblemsDto> problemsDto = problemsService.getAllProblems();
 		return ResponseEntity.ok(problemsDto);
+	}
+	
+	@PutMapping
+	public ResponseEntity<ProblemsDto> updateProblem(@RequestBody Long problemId,@RequestBody ProblemsDto problemsDto){
+		ProblemsDto updatedProblemsDto = problemsService.updateProblem(problemId, problemsDto);
+		return ResponseEntity.ok(updatedProblemsDto);
 	}
 	
 }

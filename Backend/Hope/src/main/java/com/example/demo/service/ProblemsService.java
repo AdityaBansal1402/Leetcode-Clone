@@ -11,4 +11,5 @@ public interface ProblemsService {
 	ProblemsDto createProblems(ProblemsDto problemsDto);
 	ProblemsDto getProblemById(long problemId);
 	List<ProblemsDto> getAllProblems();
+	ProblemsDto updateProblem(Long problemId, ProblemsDto problemsDto);
 }
