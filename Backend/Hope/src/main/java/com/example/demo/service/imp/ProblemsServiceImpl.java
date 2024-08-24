@@ -1,5 +1,8 @@
 package com.example.demo.service.imp;
 
+import java.util.List;import java.util.stream.Collector;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +38,13 @@ public class ProblemsServiceImpl implements ProblemsService {
 						new ResourceNotFoundException("Problem doesnotexist"));
 		
 		return ProblemsMapper.maptoProblemsDto(problems);
+	}
+
+	@Override
+	public List<ProblemsDto> getAllProblems() {
+		List<Problems> problems =problemsRepository.findAll();
+		
+		return problems.stream().map((problem)-> ProblemsMapper.maptoProblemsDto(problem)).collect((Collectors.toList()));
 	}
 
 }

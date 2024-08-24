@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,6 +34,12 @@ public class ProblemsController {
 	@GetMapping("{id}")
 	public ResponseEntity<ProblemsDto> getProblemById(@PathVariable("id") Long problemId){
 		ProblemsDto problemsDto = problemsService.getProblemById(problemId);
+		return ResponseEntity.ok(problemsDto);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<ProblemsDto>> getAllProblems(){
+		List<ProblemsDto> problemsDto = problemsService.getAllProblems();
 		return ResponseEntity.ok(problemsDto);
 	}
 	
