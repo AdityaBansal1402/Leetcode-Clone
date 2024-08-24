@@ -7,4 +7,5 @@ import com.example.demo.dto.ProblemsDto;
 @Component
 public interface ProblemsService {
 	ProblemsDto createProblems(ProblemsDto problemsDto);
+	ProblemsDto getProblemById(long problemId);
 }
