@@ -44,8 +44,8 @@ public class ProblemsController {
 		return ResponseEntity.ok(problemsDto);
 	}
 	
-	@PutMapping
-	public ResponseEntity<ProblemsDto> updateProblem(@RequestBody Long problemId,@RequestBody ProblemsDto problemsDto){
+	@PutMapping("{id}")
+	public ResponseEntity<ProblemsDto> updateProblem(@PathVariable("id") Long problemId,@RequestBody ProblemsDto problemsDto){
 		ProblemsDto updatedProblemsDto = problemsService.updateProblem(problemId, problemsDto);
 		return ResponseEntity.ok(updatedProblemsDto);
 	}
