@@ -6,9 +6,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProblemsDto {
-	public ProblemsDto(Long id, String title, String description) {
-		super();
-		this.id = id;
+	public ProblemsDto(){
+		   super();
+	}
+	public ProblemsDto(String title, String description) {
+//		super();
+//		this.id = id;
 		this.title = title;
 		this.description = description;
 	}

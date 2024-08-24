@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name="Problems")
 public class Problems {
-	
-	public Problems(Long id, String title, String description) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.description = description;
+	public Problems(){
+		   super();
 	}
+	 public Problems(String title, String description) {
+	        this.title = title;
+	        this.description = description;
+	    }
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
