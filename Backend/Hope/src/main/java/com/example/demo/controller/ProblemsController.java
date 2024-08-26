@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,6 +49,12 @@ public class ProblemsController {
 	public ResponseEntity<ProblemsDto> updateProblem(@PathVariable("id") Long problemId,@RequestBody ProblemsDto problemsDto){
 		ProblemsDto updatedProblemsDto = problemsService.updateProblem(problemId, problemsDto);
 		return ResponseEntity.ok(updatedProblemsDto);
+	}
+	
+	@DeleteMapping("{id}")
+	public ResponseEntity<String> deleteProblem(@PathVariable("id") Long problemId){
+		problemsService.deleteProblem(problemId);
+		return ResponseEntity.ok("Deleted successfully");
 	}
 	
 }

@@ -58,4 +58,12 @@ public class ProblemsServiceImpl implements ProblemsService {
 		return ProblemsMapper.maptoProblemsDto(updatedProblem);
 	}
 
+	@Override
+	public void deleteProblem(Long problemId) {
+		Problems problems = problemsRepository.findById(problemId)
+				.orElseThrow(()->
+						new ResourceNotFoundException("Problem doesnotexist"));
+		problemsRepository.deleteById(problemId);
+	}
+
 }

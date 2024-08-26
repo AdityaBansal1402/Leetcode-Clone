@@ -12,4 +12,5 @@ public interface ProblemsService {
 	ProblemsDto getProblemById(long problemId);
 	List<ProblemsDto> getAllProblems();
 	ProblemsDto updateProblem(Long problemId, ProblemsDto problemsDto);
+	void deleteProblem(Long problemId);
 }
