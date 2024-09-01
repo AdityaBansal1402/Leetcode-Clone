@@ -1,5 +1,8 @@
 package com.example.demo.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 //import org.hibernate.bytecode.internal.bytebuddy.PrivateAccessorException;
 
 import jakarta.persistence.Column;
@@ -7,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -49,4 +53,8 @@ public class Problems {
 	private String title;
 	@Column(name = "description")
 	private String description;
+	
+	@OneToMany(mappedBy = "problem")
+	private List<TestCases>testCases=new ArrayList<TestCases>();
+	
 }
