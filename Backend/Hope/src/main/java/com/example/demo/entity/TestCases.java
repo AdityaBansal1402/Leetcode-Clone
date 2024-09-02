@@ -20,7 +20,47 @@ import org.hibernate.annotations.Type;
 //@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class TestCases {
 
-    @Id
+    public TestCases(Long id, Object inputDataObject, Object outputDataObject, Problems problem) {
+		super();
+		this.id = id;
+		this.inputDataObject = inputDataObject;
+		this.outputDataObject = outputDataObject;
+		this.problem = problem;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Object getInputDataObject() {
+		return inputDataObject;
+	}
+
+	public void setInputDataObject(Object inputDataObject) {
+		this.inputDataObject = inputDataObject;
+	}
+
+	public Object getOutputDataObject() {
+		return outputDataObject;
+	}
+
+	public void setOutputDataObject(Object outputDataObject) {
+		this.outputDataObject = outputDataObject;
+	}
+
+	public Problems getProblem() {
+		return problem;
+	}
+
+	public void setProblem(Problems problem) {
+		this.problem = problem;
+	}
+
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -29,7 +69,7 @@ public class TestCases {
     private Object inputDataObject;
     
     @Type(JsonType.class)
-    @Column(columnDefinition = "jsonb", name = "input")
+    @Column(columnDefinition = "jsonb", name = "output")
     private Object outputDataObject;
 
     @ManyToOne
