@@ -20,12 +20,12 @@ import org.hibernate.annotations.Type;
 //@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class TestCases {
 
-    public TestCases(Long id, Object inputDataObject, Object outputDataObject, Problems problem) {
+    public TestCases(Long id, Object inputDataObject, Object outputDataObject, Problems problemId) {
 		super();
 		this.id = id;
 		this.inputDataObject = inputDataObject;
 		this.outputDataObject = outputDataObject;
-		this.problem = problem;
+		this.problemId = problemId;
 	}
 
 	public Long getId() {
@@ -52,12 +52,12 @@ public class TestCases {
 		this.outputDataObject = outputDataObject;
 	}
 
-	public Problems getProblem() {
-		return problem;
+	public Problems getProblemId() {
+		return problemId;
 	}
 
-	public void setProblem(Problems problem) {
-		this.problem = problem;
+	public void setProblemId(Problems problemId) {
+		this.problemId = problemId;
 	}
 
 	@Id
@@ -74,5 +74,5 @@ public class TestCases {
 
     @ManyToOne
     @JoinColumn(name = "problem_id")
-    private Problems problem;
+    private Problems problemId;
 }

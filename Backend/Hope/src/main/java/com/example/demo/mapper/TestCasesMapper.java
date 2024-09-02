@@ -10,7 +10,7 @@ public class TestCasesMapper {
 				testCases.getId(),
 				testCases.getInputDataObject(),
 				testCases.getOutputDataObject(),
-				testCases.getProblem()
+				testCases.getProblemId()
 		);
 	}
 	public static TestCases maptoTestCases(TestCasesDto testCasesDto) {
