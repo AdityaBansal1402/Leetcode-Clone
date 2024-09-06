@@ -11,6 +11,7 @@ import lombok.Setter;
 import org.hibernate.annotations.Type;
 //import org.hibernate.annotations.TypeDef;
 
+
 @Getter
 @Setter
 @NoArgsConstructor
