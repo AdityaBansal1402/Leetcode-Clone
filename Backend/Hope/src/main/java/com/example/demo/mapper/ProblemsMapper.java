@@ -12,6 +12,7 @@ public class ProblemsMapper {
 			problems.getId(),
 			problems.getTitle(),
 			problems.getDescription(),
+			problems.getDiffiLong(),
 			problems.getTestCases().stream().map(TestCasesMapper::maptoTestCasesDto).collect(Collectors.toList())
 		);
 	}
@@ -20,6 +21,7 @@ public class ProblemsMapper {
 				problemsDto.getId(),
 				problemsDto.getTitle(),
 				problemsDto.getDescription(),
+				problemsDto.getDiffLong(),
 				problemsDto.getTestCasesDtos().stream().map(TestCasesMapper::maptoTestCases).collect(Collectors.toList())
 		);
 	}

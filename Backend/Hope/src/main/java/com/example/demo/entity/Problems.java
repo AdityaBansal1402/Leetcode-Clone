@@ -22,11 +22,18 @@ public class Problems {
 	public Problems(){
 		   super();
 	}
-	public Problems(Long id, String title, String description, List<TestCases> testCases) {
+	public Long getDiffiLong() {
+		return diffiLong;
+	}
+	public void setDiffiLong(Long diffiLong) {
+		this.diffiLong = diffiLong;
+	}
+	public Problems(Long id, String title, String description, Long diffiLong, List<TestCases> testCases) {
 		super();
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.diffiLong = diffiLong;
 		this.testCases = testCases;
 	}
 	@Id
@@ -54,6 +61,7 @@ public class Problems {
 	private String title;
 	@Column(name = "description")
 	private String description;
+	private Long diffiLong;
 	
 	public List<TestCases> getTestCases() {
 		return testCases;
