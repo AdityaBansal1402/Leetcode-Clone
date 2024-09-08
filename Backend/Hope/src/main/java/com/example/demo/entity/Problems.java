@@ -22,12 +22,13 @@ public class Problems {
 	public Problems(){
 		   super();
 	}
-	 public Problems(Long id, String title, String description) {
-	        super();
-	        this.id = id;
-		 	this.title = title;
-	        this.description = description;
-	    }
+	public Problems(Long id, String title, String description, List<TestCases> testCases) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.testCases = testCases;
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -54,7 +55,13 @@ public class Problems {
 	@Column(name = "description")
 	private String description;
 	
-	@OneToMany(mappedBy = "problem")
+	public List<TestCases> getTestCases() {
+		return testCases;
+	}
+	public void setTestCases(List<TestCases> testCases) {
+		this.testCases = testCases;
+	}
+	@OneToMany(mappedBy = "problemId")
 	private List<TestCases>testCases=new ArrayList<TestCases>();
 	
 }
