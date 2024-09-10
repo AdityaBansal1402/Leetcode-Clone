@@ -20,7 +20,6 @@ import org.hibernate.annotations.Type;
 @Table(name = "testcases")
 //@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class TestCases {
-
     public TestCases(Long id, Object inputDataObject, Object outputDataObject, Problems problemId) {
 		super();
 		this.id = id;
