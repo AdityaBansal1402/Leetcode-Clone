@@ -47,7 +47,6 @@ public class TestCases {
 	public Object getOutputDataObject() {
 		return outputDataObject;
 	}
-
 	public void setOutputDataObject(Object outputDataObject) {
 		this.outputDataObject = outputDataObject;
 	}
