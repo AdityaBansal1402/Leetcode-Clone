@@ -61,6 +61,7 @@ public class Problems {
 	private String title;
 	@Column(name = "description")
 	private String description;
+	@Column(name="diff")
 	private Long diffiLong;
 	
 	public List<TestCases> getTestCases() {
