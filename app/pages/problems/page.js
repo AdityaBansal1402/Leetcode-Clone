@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 export default function Problems() {
   let i=1;
     return (
