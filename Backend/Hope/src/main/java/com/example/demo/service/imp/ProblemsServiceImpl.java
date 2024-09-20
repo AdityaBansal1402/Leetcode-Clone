@@ -22,14 +22,42 @@ public class ProblemsServiceImpl implements ProblemsService {
 	@Autowired
 	private ProblemsRepository problemsRepository;
 
-	@Override
-	public ProblemsDto createProblems(ProblemsDto problemsDto) {
-		
-		Problems problems=ProblemsMapper.maptoProblems(problemsDto);
-		Problems savedProblems = problemsRepository.save(problems);
-		
-		return ProblemsMapper.maptoProblemsDto(savedProblems);
-	}
+//	@Override
+//	public ProblemsDto createProblems(ProblemsDto problemsDto) {
+//		
+//		Problems problems=ProblemsMapper.maptoProblems(problemsDto);
+//		Problems savedProblems = problemsRepository.save(problems);
+//		
+//		return ProblemsMapper.maptoProblemsDto(savedProblems);
+//	}
+	 private TestCasesRepository testCasesRepository; // Add the repository for TestCases
+
+	    @Override
+	    public ProblemsDto createProblems(ProblemsDto problemsDto) {
+	        Problems problems = ProblemsMapper.maptoProblems(problemsDto);
+	        
+	        // Create default test cases
+	        List<TestCases> defaultTestCases = new ArrayList<>();
+	        for (int i = 1; i <= 3; i++) {
+	            TestCases testCase = new TestCases();
+	            testCase.setInput("Default input " + i);
+	            testCase.setExpectedOutput("Default output " + i);
+	            testCase.setProblemId(problems); // Set the reference to the Problem
+	            defaultTestCases.add(testCase);
+	        }
+	        
+	        problems.setTestCases(defaultTestCases); // Associate test cases with the problem
+
+	        Problems savedProblems = problemsRepository.save(problems);
+	        
+	        // Save the test cases to the database
+	        for (TestCases testCase : defaultTestCases) {
+	            testCasesRepository.save(testCase);
+	        }
+
+	        return ProblemsMapper.maptoProblemsDto(savedProblems);
+	    }
+
 
 	@Override
 	public ProblemsDto getProblemById(long problemId) {
