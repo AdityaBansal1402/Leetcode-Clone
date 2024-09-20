@@ -11,6 +11,7 @@
   "dependencies": {
     "@codemirror/lang-javascript": "^6.2.2",
     "@uiw/codemirror-theme-andromeda": "^4.23.0",
+    "compile-run": "^2.3.4",
     "mongodb": "^6.8.0",
     "next": "14.2.3",
     "react": "^18",

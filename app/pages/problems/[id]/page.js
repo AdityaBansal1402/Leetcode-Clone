@@ -5,40 +5,93 @@ import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/material.css';
 import './custom.css';
 import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/clike/clike';
+// const {c, cpp, node, python, java} = require('compile-run');
+// import {c,cpp,node,python,java} from 'compile-run';
 
 export default function Myworkspace() {
-  const [code, setCode] = useState("");
-  const [exec, setExec] = useState("");
+  const [code, setCode] = useState(``);
+  const [exec, setExec] = useState(``);
   const editorRef = useRef(null);
 
   const handleChange = (editor, data, value) => {
     console.log('handleChange called', value);
     setCode(value);
   };
-  
+ 
   const submy = async () => {
     try {
-      console.log('Submitting code:', code);
-      const response = await fetch('/api/execute-code', {
+      const response = await fetch('/pages/api/run-cpp', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ code })
+        body: JSON.stringify({ code }),  // Send the code to the API
       });
-
-      if (response.ok) {
+  
+      const contentType = response.headers.get("content-type");
+  
+      if (contentType && contentType.includes("application/json")) {
         const data = await response.json();
-        console.log('Response received:', data);
-        setExec(data.result);
+        if (response.ok) {
+          setExec(data.output);  // Set the output received from the server
+        } else {
+          setExec(`Error: ${data.error}`);
+        }
       } else {
-        const errorData = await response.json();
-        console.error('Error response:', errorData.error);
+        // If it's not JSON, log the response for debugging
+        const text = await response.text();
+        console.error("Received unexpected response:", text);
+        setExec(`Error: Unexpected response format`);
       }
     } catch (error) {
-      console.error('Request error:', error);
+      setExec(`Error: ${error.message}`);
     }
   };
+  
+  
+  // const submy = async () => {
+  //   try {
+  //     const response = await fetch('/api/run-cpp', {
+  //         method: 'POST',
+  //         headers: {
+  //             'Content-Type': 'application/json',
+  //         },
+  //         body: JSON.stringify({ code }),  // Send the code to the API
+  //     });
+
+  //     const data = await response.json();
+  //     if (response.ok) {
+  //         setExec(data.output);  // Set the output received from the server
+  //     } else {
+  //         setExec(`Error: ${data.error}`);
+  //     }
+  // } catch (error) {
+  //     setExec(`Error: ${error.message}`);
+  // }
+  //   // try {
+  //   //   console.log('Submitting code:', code);
+  //   //   const response = await fetch('/api/execute-code', {
+  //   //     method: 'POST',
+  //   //     headers: {
+  //   //       'Content-Type': 'application/json'
+  //   //     },
+  //   //     body: JSON.stringify({ code })
+  //   //   });
+
+  //   //   if (response.ok) {
+  //   //     const data = await response.json();
+  //   //     console.log('Response received:', data);
+  //   //     setExec(data.result);
+  //   //   } else {
+  //   //     const errorData = await response.json();
+  //   //     console.error('Error response:', errorData.error);
+  //   //   }
+  //   // } catch (error) {
+  //   //   console.error('Request error:', error);
+  //   // }
+
+  // };
 
   
   return (
@@ -55,7 +108,7 @@ export default function Myworkspace() {
                 ref={editorRef}
                 value={code}
                 options={{
-                  mode: 'javascript',
+                  mode: 'text/x-c++src',
                   theme: 'custom',
                   lineNumbers: true
                 }}

@@ -1,5 +1,6 @@
 package com.example.demo.service.imp;
 
+import java.util.ArrayList;
 import java.util.List;import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
@@ -8,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.dto.ProblemsDto;
 import com.example.demo.entity.Problems;
+import com.example.demo.entity.TestCases;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.mapper.ProblemsMapper;
 import com.example.demo.repository.ProblemsRepository;
+import com.example.demo.repository.TestCasesRepository;
 import com.example.demo.service.ProblemsService;
 
 import lombok.AllArgsConstructor;
@@ -30,33 +33,30 @@ public class ProblemsServiceImpl implements ProblemsService {
 //		
 //		return ProblemsMapper.maptoProblemsDto(savedProblems);
 //	}
-	 private TestCasesRepository testCasesRepository; // Add the repository for TestCases
-
-	    @Override
-	    public ProblemsDto createProblems(ProblemsDto problemsDto) {
-	        Problems problems = ProblemsMapper.maptoProblems(problemsDto);
-	        
-	        // Create default test cases
-	        List<TestCases> defaultTestCases = new ArrayList<>();
-	        for (int i = 1; i <= 3; i++) {
-	            TestCases testCase = new TestCases();
-	            testCase.setInput("Default input " + i);
-	            testCase.setExpectedOutput("Default output " + i);
-	            testCase.setProblemId(problems); // Set the reference to the Problem
-	            defaultTestCases.add(testCase);
-	        }
-	        
-	        problems.setTestCases(defaultTestCases); // Associate test cases with the problem
-
-	        Problems savedProblems = problemsRepository.save(problems);
-	        
-	        // Save the test cases to the database
-	        for (TestCases testCase : defaultTestCases) {
-	            testCasesRepository.save(testCase);
-	        }
-
-	        return ProblemsMapper.maptoProblemsDto(savedProblems);
-	    }
+	private TestCasesRepository testCasesRepository; // Add the repository for TestCases
+	   @Override
+	   public ProblemsDto createProblems(ProblemsDto problemsDto) {
+	       Problems problems = ProblemsMapper.maptoProblems(problemsDto);
+	       
+	       // Create default test cases
+	       List<TestCases> defaultTestCases = new ArrayList<>();
+	       for (int i = 1; i <= 3; i++) {
+	           TestCases testCase = new TestCases();
+	           testCase.setInput("Default input " + i);
+	           testCase.setExpectedOutput("Default output " + i);
+	           testCase.setProblemId(problems); // Set the reference to the Problem
+	           defaultTestCases.add(testCase);
+	       }
+	       
+	       problems.setTestCases(defaultTestCases); // Associate test cases with the problem
+	       Problems savedProblems = problemsRepository.save(problems);
+	       
+	       // Save the test cases to the database
+	       for (TestCases testCase : defaultTestCases) {
+	           testCasesRepository.save(testCase);
+	       }
+	       return ProblemsMapper.maptoProblemsDto(savedProblems);
+	   }
 
 
 	@Override
