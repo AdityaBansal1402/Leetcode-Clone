@@ -10,8 +10,7 @@ export default async function handler(req, res) {
             console.error("Error executing code:", err.message);  // Log the error to see what is going wrong
             res.status(500).json({ error: err.message });
         }
-    }
-    else {
+    }else {
         res.status(405).json({ error: 'Only POST method is allowed' });
     }
 }
