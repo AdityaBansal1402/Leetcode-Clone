@@ -1,6 +1,9 @@
+//pages/api/run-cpp
+
 import { cpp } from 'compile-run';
 
 export default async function handler(req, res) {
+    console.log("hello")
     if (req.method === 'POST') {
         const { code } = req.body;
         try {

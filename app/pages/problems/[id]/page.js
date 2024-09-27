@@ -20,38 +20,39 @@ export default function Myworkspace() {
   };
  
  
-  const submy = async () => {
-    try {
-      const response = await fetch('/pages/api/run-cpp', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ code }),  // Send the code to the API
-      });
-  
-      const contentType = response.headers.get("content-type");
-  
-      if (contentType && contentType.includes("application/json")) {
-        const data = await response.json();
-        if (response.ok) {
-          setExec(data.output);  // Set the output received from the server
-        } else {
-          setExec(`Error: ${data.error}`);
-        }
-      } else {
-        // If it's not JSON, log the response for debugging
-        const text = await response.text();
-        console.error("Received unexpected response:", text);
-        setExec(`Error: Unexpected response format`);
-      }
-    } catch (error) {
-      setExec(`Error: ${error.message}`);
-    }
-  };
-  
-  
   // const submy = async () => {
+  //   try {
+  //     // console.log('Submitting code:', code);
+  //     const response = await fetch('/api/run-cpp', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ code }),  // Send the code to the API
+  //     });
+  
+  //     const contentType = response.headers.get("content-type");
+  
+  //     if (contentType && contentType.includes("application/json")) {
+  //       const data = await response.json();
+  //       if (response.ok) {
+  //         setExec(data.output);  // Set the output received from the server
+  //       } else {
+  //         setExec(`Error: ${data.error}`);
+  //       }
+  //     } else {
+  //       // If it's not JSON, log the response for debugging
+  //       const text = await response.text();
+  //       console.error("Received unexpected response:", text);
+  //       setExec(`Error: Unexpected response format`);
+  //     }
+  //   } catch (error) {
+  //     setExec(`Error: ${error.message}`);
+  //   }
+  // };
+  
+  
+  const submy = async () => {
   //   try {
   //     const response = await fetch('/api/run-cpp', {
   //         method: 'POST',
@@ -70,29 +71,29 @@ export default function Myworkspace() {
   // } catch (error) {
   //     setExec(`Error: ${error.message}`);
   // }
-  //   // try {
-  //   //   console.log('Submitting code:', code);
-  //   //   const response = await fetch('/api/execute-code', {
-  //   //     method: 'POST',
-  //   //     headers: {
-  //   //       'Content-Type': 'application/json'
-  //   //     },
-  //   //     body: JSON.stringify({ code })
-  //   //   });
+    try {
+      console.log('Submitting code:', code);
+      const response = await fetch('/pages/api/run', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ code })
+      });
 
-  //   //   if (response.ok) {
-  //   //     const data = await response.json();
-  //   //     console.log('Response received:', data);
-  //   //     setExec(data.result);
-  //   //   } else {
-  //   //     const errorData = await response.json();
-  //   //     console.error('Error response:', errorData.error);
-  //   //   }
-  //   // } catch (error) {
-  //   //   console.error('Request error:', error);
-  //   // }
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Response received:', data);
+        setExec(data.result);
+      } else {
+        const errorData = await response.json();
+        console.error('Error response:', errorData.error);
+      }
+    } catch (error) {
+      console.error('Request error:', error);
+    }
 
-  // };
+  };
 
   
   return (
@@ -109,7 +110,8 @@ export default function Myworkspace() {
                 ref={editorRef}
                 value={code}
                 options={{
-                  mode: 'text/x-c++src',
+                  // mode: 'text/x-c++src',
+                  mode: 'javascript',
                   theme: 'custom',
                   lineNumbers: true
                 }}
