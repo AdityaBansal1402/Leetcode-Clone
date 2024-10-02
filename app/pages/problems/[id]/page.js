@@ -71,9 +71,10 @@ export default function Myworkspace() {
   // } catch (error) {
   //     setExec(`Error: ${error.message}`);
   // }
-    try {
+  
+  try {
       console.log('Submitting code:', code);
-      const response = await fetch('/pages/api/run', {
+      const response = await fetch('/pages/api/run-cpp', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
